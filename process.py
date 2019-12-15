@@ -26,6 +26,8 @@ gsToDraw = ('Result', ('StartDate', ('Area', ('Province', 'City')), 'RegistCapi'
 rzToDraw = ('Result', ('ProductName', 'Date', 'Round', 'Amount', 'Investment'), 
 ('Company', 'ProductName', 'Date', 'Round', 'Amount', 'Investment'),'rz')
 toDrawList = (gsToDraw, rzToDraw)
+#WRITE YOUR FORMAT HERE
+#(result tag, (content to extract, nested tuple may be used to describe structure), (tag tuple), information name-should same with crawl.py) 
 
 import json, csv, codecs
 with open('companyList.csv', 'r') as f:
@@ -68,6 +70,8 @@ for toDraw in toDrawList:
                                     _[item] = '-'
                                 infToDraw.append(_[item])
                             writer.writerow(infToDraw)
+                    #elif toDraw[-1] == WHAT YOU WANT
+                        #Modify the former code to adapt to your own one HERE
 
 
 

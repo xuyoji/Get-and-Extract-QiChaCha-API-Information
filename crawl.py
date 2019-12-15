@@ -2,13 +2,20 @@
 #2019.12.14
 #python3 program
 
-import json, time
+import json, os
 from getInf import *
 from key_zhou import *
+
+#EDIT YOUR API INFORMATION HERE
+#Format in (URL, information name, keyword name)
+#Add it to toGetList
 gs = ('http://api.qichacha.com/ECIV4/GetDetailsByName', 'gs', 'keyword')
 rz = ('http://api.qichacha.com/BusinessStateV4/SearchCompanyFinancings', 'rz', 'searchKey')
 toGetList = (gs, rz)
+
 for toGet in toGetList:
+    if not os.path.exists(toGet[1]):
+        os.makedirs(toGet[1])
     with open('companyList.csv', 'r') as f:
         companyList = [_.strip() for _ in f.readlines()]
     for company in companyList:
