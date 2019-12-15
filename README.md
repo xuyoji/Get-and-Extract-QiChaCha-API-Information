@@ -1,6 +1,6 @@
 requests package is required.
 
-`sudo pip3 install request`
+`sudo pip3 install requests`
 # Function
 * Use Qichacha's API to get company information
 * Convert them to csv file
