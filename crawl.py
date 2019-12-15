@@ -4,7 +4,7 @@
 
 import json, os
 from getInf import *
-from key_zhou import *
+from key import *
 
 #EDIT YOUR API INFORMATION HERE
 #Format in (URL, information name, keyword name)
