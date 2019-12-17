@@ -1,5 +1,7 @@
-#!/usr/bin/python
-# pip install requests
+#copyright @ xuyj@shanghaitech.edu.cn
+#2019.12.15
+#python3 program
+
 import requests
 import time
 import hashlib
@@ -7,25 +9,17 @@ import json
  
 
 def getInf(appkey, seckey, reqInterNme, company, linker):
-    #  请求参数
     encode = 'utf-8'
 
-    # Http请求头设置
     timespan = str(int(time.time()))
-    token = appkey + timespan + seckey;
+    token = appkey + timespan + seckey
     hl = hashlib.md5()
     hl.update(token.encode(encoding=encode))
-    token = hl.hexdigest().upper();
-    #print('MD5加密后为 ：' + token)
+    token = hl.hexdigest().upper()
 
-    #设置请求Url-请自行设置Url
-    #reqInterNme = "http://api.qichacha.com/ECIV4/Search"
     paramStr = linker+'='+ company
-    url = reqInterNme + "?key=" + appkey + "&" + paramStr;
+    url = reqInterNme + "?key=" + appkey + "&" + paramStr
     headers={'Token': token,'Timespan':timespan}
     response = requests.get(url, headers=headers)
 
-    resultJson = json.dumps(str(response.content, encoding = encode))
-    # convert unicode to chinese
-    resultJson = resultJson.encode(encode).decode("unicode-escape")
-    return (response.status_code, resultJson)
+    return (response.status_code, str(response.content, encoding = encode))

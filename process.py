@@ -34,14 +34,15 @@ with open('companyList.csv', 'r') as f:
     companyList = [_.strip() for _ in f.readlines()]
 
 for toDraw in toDrawList:
-    with codecs.open('%s_result.csv'%toDraw[-1], 'w', 'utf_8_sig') as f:
+    with codecs.open('%s_result_test.csv'%toDraw[-1], 'w', 'utf_8_sig') as f:
         writer = csv.writer(f)
         tab = toDraw[-2]
         writer.writerow(tab)
         for company in companyList:
                 with open('.//%s//'%toDraw[-1] + company + '.txt', 'r') as ff:
                     content = ff.readlines()
-                    content = (''.join(content)).strip('\"')
+                    #content = (''.join(content)).strip('\"')
+                    content = ''.join(content)
                     Inf = json.loads(content)
                     rst = toDraw[0]
                     infToDraw = [company]
@@ -72,6 +73,8 @@ for toDraw in toDrawList:
                             writer.writerow(infToDraw)
                     #elif toDraw[-1] == WHAT YOU WANT
                         #Modify the former code to adapt to your own one HERE
+
+print('Done!')
 
 
 
